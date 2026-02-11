@@ -21,10 +21,10 @@
 
 //variables in calculator state
 
-let currentValue="";  //what it represents
-let previousValue=""; //when it is set
-let operator=""; //when it exists
-let isNewInput=true; //when it flips
+let currentValue = "";  //what it represents
+let previousValue = ""; //when it is set
+let operator = ""; //when it exists
+let isNewInput = true; //when it flips
 
 //first action : take a input 
 //how? 
@@ -32,13 +32,13 @@ let isNewInput=true; //when it flips
 // we see that if no number exist , then we start one 
 // if number exist , we append that number to current value
 
-function inputDigit(digit){
-    if (isNewInput){
-        currentValue=digit;
-        isNewInput=false;
+function inputDigit(digit) {
+    if (isNewInput) {
+        currentValue = digit;
+        isNewInput = false;
     }
-    else{
-        currentValue=currentValue+digit;
+    else {
+        currentValue = currentValue + digit;
     }
 }
 
@@ -57,21 +57,43 @@ function inputDigit(digit){
 // first 2+3=5
 // then 5*4=20
 
-function inputOperator(newOperator){
-    // if (operator){
-        
-    // }
-    // else{
-        
-    // }
+function inputOperator(newOperator) {
+        previousValue = currentValue;
+        operator = newOperator;
+        isNewInput = true;
 }
 
 //third action : calculate result
 //how?
 // when user press a equal button we perform calculation
 
-function handleEqualInput(){
-    
+function handleEqualInput() {
+    let result;
+    switch (operator) {
+        case "+":
+            result = String(Number(previousValue) + Number(currentValue));
+            break;
+        case "-":
+            result = String(Number(previousValue) - Number(currentValue));
+            break;
+        case "*":
+            result = String(Number(previousValue) * Number(currentValue));
+            break;
+        case "/":
+            if (Number(currentValue) === "0") {
+                result = "Error: Division by zero";
+            }
+            else {
+                result = String(Number(previousValue) / Number(currentValue));
+            }
+            break;
+        default:
+            return;
+    }
+    currentValue = result;
+    previousValue = "";
+    operator = "";
+    isNewInput = true;
 }
 
 //fourth action : clear state
@@ -79,8 +101,11 @@ function handleEqualInput(){
 // when user press a clear button
 // we reset state
 
-function handleClearInput(){
-    
+function handleClearInput() {
+    currentValue = "";  //what it represents
+    previousValue = ""; //when it is set
+    operator = ""; //when it exists
+    isNewInput = true; //when it flips
 }
 
 //fifth action : delete last digit
@@ -88,7 +113,13 @@ function handleClearInput(){
 // when user press delete button
 // we delete last digit from current value
 
-function handleDeleteInput(){
-    
+function handleDeleteInput() {
+    if(currentValue.length==1){
+        currentValue="";
+        isNewInput=true;
+    }
+    else{
+        currentValue=currentValue.slice(0, -1);
+    }
 }
 
