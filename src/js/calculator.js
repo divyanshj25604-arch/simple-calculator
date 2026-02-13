@@ -25,6 +25,7 @@ let currentValue = "";  //what it represents
 let previousValue = ""; //when it is set
 let operator = ""; //when it exists
 let isNewInput = true; //when it flips
+let lastExpression = ""; //stores the expression to display after =
 
 //first action : take a input 
 //how? 
@@ -94,6 +95,7 @@ function handleEqualInput() {
         result = parseFloat(result.toFixed(10));
     }
     result = String(result);
+    lastExpression = previousValue + " " + operator + " " + currentValue;
     currentValue = result;
     previousValue = "";
     operator = "";
@@ -110,6 +112,7 @@ function handleClearInput() {
     previousValue = ""; //when it is set
     operator = ""; //when it exists
     isNewInput = true; //when it flips
+    lastExpression=""
 }
 
 //fifth action : delete last digit
