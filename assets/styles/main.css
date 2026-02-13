@@ -93,6 +93,10 @@ body {
     opacity: 0.95;
 }
 
+button[data-value="*"] {
+  font-weight: 500;
+}
+
 .operator {
     background-color: #ff9500;
     color: #fff;

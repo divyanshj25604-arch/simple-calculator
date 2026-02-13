@@ -1,8 +1,13 @@
-{
-  "editor.quickSuggestions": true,
-  "editor.suggestOnTriggerCharacters": true,
-  "editor.inlineSuggest.enabled": true,
-  "github.copilot.enable": {
-    "*": false
-  }
-}
+ {
+  "editor.quickSuggestions": {
+    "comments": "on",
+    "strings": "on",
+    "other": "on"
+  },}
+//   "editor.suggestOnTriggerCharacters": true,
+//   "editor.inlineSuggest.enabled": true,
+//   "github.copilot.enable": {
+//     "*": true
+//   }
+//}
+
