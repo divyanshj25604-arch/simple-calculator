@@ -58,9 +58,9 @@ function inputDigit(digit) {
 // then 5*4=20
 
 function inputOperator(newOperator) {
-        previousValue = currentValue;
-        operator = newOperator;
-        isNewInput = true;
+    previousValue = currentValue;
+    operator = newOperator;
+    isNewInput = true;
 }
 
 //third action : calculate result
@@ -71,25 +71,29 @@ function handleEqualInput() {
     let result;
     switch (operator) {
         case "+":
-            result = String(Number(previousValue) + Number(currentValue));
+            result = (Number(previousValue) + Number(currentValue));
             break;
         case "-":
-            result = String(Number(previousValue) - Number(currentValue));
+            result = (Number(previousValue) - Number(currentValue));
             break;
         case "*":
-            result = String(Number(previousValue) * Number(currentValue));
+            result = (Number(previousValue) * Number(currentValue));
             break;
         case "/":
-            if (Number(currentValue) === "0") {
-                result = "Error: Division by zero";
+            if (Number(currentValue) === 0) {
+                result = "Not Defined";
             }
             else {
-                result = String(Number(previousValue) / Number(currentValue));
+                result = (Number(previousValue) / Number(currentValue));
             }
             break;
         default:
             return;
     }
+    if (typeof result === "number") {
+        result = parseFloat(result.toFixed(10));
+    }
+    result = String(result);
     currentValue = result;
     previousValue = "";
     operator = "";
@@ -114,12 +118,12 @@ function handleClearInput() {
 // we delete last digit from current value
 
 function handleDeleteInput() {
-    if(currentValue.length==1){
-        currentValue="";
-        isNewInput=true;
+    if (currentValue.length == 1) {
+        currentValue = "";
+        isNewInput = true;
     }
-    else{
-        currentValue=currentValue.slice(0, -1);
+    else {
+        currentValue = currentValue.slice(0, -1);
     }
 }
 
