@@ -72,30 +72,31 @@ function handleEqualInput() {
     let result;
     switch (operator) {
         case "+":
-            result = (Number(previousValue) + Number(currentValue));
+            result = (toNumber(previousValue) + toNumber(currentValue));
             break;
         case "-":
-            result = (Number(previousValue) - Number(currentValue));
+            result = (toNumber(previousValue) - toNumber(currentValue));
             break;
-        case "*":
-            result = (Number(previousValue) * Number(currentValue));
+        case "x":
+            result = (toNumber(previousValue) * toNumber(currentValue));
             break;
         case "/":
-            if (Number(currentValue) === 0) {
+            if (toNumber(currentValue) === 0) {
                 result = "Not Defined";
             }
             else {
-                result = (Number(previousValue) / Number(currentValue));
+                result = (toNumber(previousValue) / toNumber(currentValue));
             }
             break;
         default:
             return;
     }
     if (typeof result === "number") {
-        result = parseFloat(result.toFixed(10));
+        result = formatNumber(result)
     }
+    result=limitDecimals(result)
     result = String(result);
-    lastExpression = previousValue + " " + operator + " " + currentValue;
+    lastExpression = buildExpression(previousValue,operator,currentValue);
     currentValue = result;
     previousValue = "";
     operator = "";

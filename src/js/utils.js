@@ -9,8 +9,16 @@ function limitDecimals(value){
 }
 
 function  buildExpression(previous, operator, current){
-    if (operator==="*"){
-        operator="x"
-    }
-    expression=previous + " " + operator + " " + current;
+    // if (operator==="*"){
+    //     operator="x"
+    // };
+    let expression=previous + " " + operator + " " + current;
+    console.log(expression);
+    return expression;
 }
+
+function toNumber(value){
+    value = Number(value)
+    return value
+}
+
