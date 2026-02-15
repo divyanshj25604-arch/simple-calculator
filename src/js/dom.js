@@ -20,6 +20,7 @@
 let buttons = document.querySelectorAll(".button");  //access all the buttons from html
 let historyElement = document.querySelector(".history"); //access the history i.e. the text on the display on which we will se the expression
 let resultElement = document.querySelector(".result"); // access the result where we will se the result of the operation
+let operatorElement = document.querySelector(".operatordisplay");
 
 //adding event listener click to all the buttons by first iterating through each button of the calculator panel
 
@@ -31,24 +32,27 @@ buttons.forEach(button => {
         //checking the data type of the button and calling the appropriate function acc to the data type of the button
 
         if (type === "digit") {
-            inputDigit(value)
+            inputDigit(value);
         }
         else if (type === "operator") {
-            inputOperator(value)
+            inputOperator(value);
+            operatorElement.textContent = value === "*" ? "x" : value;
+
         }
         else if (type === "equal") {
-            handleEqualInput()
+            handleEqualInput();
         }
         else if (type === "clear") {
-            handleClearInput()
+            handleClearInput();
         }
         else if (type === "delete") {
-            handleDeleteInput()
+            handleDeleteInput();
         }
         else {
             return
         };
         historyElement.textContent = lastExpression;
         resultElement.textContent = currentValue;
+        operatorElement.textContent = operator === "*" ? "X" : operator;
     });
 });

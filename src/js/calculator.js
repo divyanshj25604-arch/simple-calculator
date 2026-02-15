@@ -40,8 +40,8 @@ function inputDigit(digit) {
     }
     else {
         currentValue = currentValue + digit;
-    }
-}
+    };
+};
 
 //second action : take a operator input 
 //how?
@@ -62,7 +62,8 @@ function inputOperator(newOperator) {
     previousValue = currentValue;
     operator = newOperator;
     isNewInput = true;
-}
+    lastExpression = "";
+};
 
 //third action : calculate result
 //how?
@@ -77,7 +78,7 @@ function handleEqualInput() {
         case "-":
             result = (toNumber(previousValue) - toNumber(currentValue));
             break;
-        case "x":
+        case "*":
             result = (toNumber(previousValue) * toNumber(currentValue));
             break;
         case "/":
@@ -90,18 +91,18 @@ function handleEqualInput() {
             break;
         default:
             return;
-    }
+    };
     if (typeof result === "number") {
         result = formatNumber(result)
-    }
-    result=limitDecimals(result)
+    };
     result = String(result);
-    lastExpression = buildExpression(previousValue,operator,currentValue);
+    lastExpression = buildExpression(previousValue, operator, currentValue);
     currentValue = result;
     previousValue = "";
     operator = "";
     isNewInput = true;
-}
+    operatorElement.textContent = "";
+};
 
 //fourth action : clear state
 //how?
@@ -113,8 +114,8 @@ function handleClearInput() {
     previousValue = ""; //when it is set
     operator = ""; //when it exists
     isNewInput = true; //when it flips
-    lastExpression=""
-}
+    lastExpression = ""
+};
 
 //fifth action : delete last digit
 //how?
@@ -128,6 +129,6 @@ function handleDeleteInput() {
     }
     else {
         currentValue = currentValue.slice(0, -1);
-    }
-}
+    };
+};
 

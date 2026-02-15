@@ -26,14 +26,6 @@ body {
     align-items: center;
 }
 
-/* .title {
-    font-size: 25px;
-    text-decoration: underline;
-    font-weight: 600;
-    margin-top: 10px;
-    color: #000000;
-} */
-
 .screen {
     width: 94%;
     height: 30%;
@@ -41,6 +33,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-around;
@@ -49,19 +42,26 @@ body {
     padding: 30px 20px; 
 }
 
+.operatordisplay {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
 .history {
     font-size: 20px;
     opacity: 0.6;
 }
 
 .result {
-    font-size: 50px;
+    font-size: 54px;
 }
 
 .panel {
     width: 94%;
     height: 85%;
-    /* background-color: #fffdfd; */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
