@@ -67,6 +67,7 @@ These functions are reusable and independent of state or DOM.
 
 📁 Folder Structure
 
+```
 simple-calculator/
 │
 ├── index.html
@@ -86,6 +87,7 @@ simple-calculator/
     ├── architecture.md
     ├── decisions.md
     └── future.md
+```
 
 ⸻
 
